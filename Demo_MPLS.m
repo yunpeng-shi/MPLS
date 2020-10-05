@@ -1,7 +1,7 @@
-
+rng(3)
 % generate synthetic data with uniform corruption
 
-model_out = Rotation_Graph_Generation(200,0.5,0.8,0,'uniform');
+model_out = Rotation_Graph_Generation(200,0.5,0.85,0,'uniform');
 
 Ind = model_out.Ind; % matrix of edge indices (m by 2)
 RijMat = model_out.RijMat; % given corrupted and noisy relative rotations
@@ -19,6 +19,16 @@ MPLS_parameters.max_iter = 100;
 MPLS_parameters.reweighting = CEMP_parameters.reweighting(end);
 MPLS_parameters.thresholding = [0.95,0.9,0.85,0.8];
 MPLS_parameters.cycle_info_ratio = 1./((1:MPLS_parameters.max_iter)+1);
+
+% For dense graphs with sufficient uncorrupted 3-cycles for all edges, 
+% the following parameters may work even better: reweighting parameter can gradually
+% increase (in ICML paper we fix beta=32 for MPLS). One can increasingly weigh 3-cycle
+% consistency information and ignore residual nformation (in ICML paper we
+% gradually ignore cycle information and weigh residual more). 
+
+% MPLS_parameters.reweighting = 0.1*1.5.^((1:15)-1);
+% MPLS_parameters.cycle_info_ratio = 1-1./((1:MPLS_parameters.max_iter)+1);
+
 
 
 % run MPLS
