@@ -7,7 +7,7 @@ This repo contains matlab files for implementing the method of the papers
 [Message Passing Least Squares Framework and Its Applications in Rotation Synchronization](https://arxiv.org/pdf/2007.13638.pdf), Yunpeng Shi and Gilad Lerman, ICML 2020.
 [Robust Group Synchronization via Cycle-Edge Message Passing](https://arxiv.org/pdf/1912.11347.pdf), Gilad Lerman and Yunpeng Shi, arXiv preprint, 2019.
 
-MPLS is a powerful alternative for the popular IRLS (Iteratively Reweighted Least Squares) algorithm. 
+MPLS is a powerful alternative for the popular IRLS (Iteratively Reweighted Least Squares) algorithm for solving the general problem of group synchronization (and rotation averaging as a special case).
 
 ## Usage
 Download matlab files to the same directory. Checkout and run the following demo code. Please also see in the following file for different choices of parameters that we recommend.
