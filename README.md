@@ -23,7 +23,7 @@ MPLS_parameters.reweighting
 ```
 is that:
 
-As the iteration # increases, both of them increases (or at least nondecreasing) and then stops at a fixed number between 20-50 (cannot increases to infinity due to numerical instability). 
+As the iteration # increases, both of them increases (or at least be nondecreasing) and then stops at a fixed number between 20-50 (cannot increases to infinity due to numerical instability). 
 
 The following parameter determines the fraction of cycle-consistency information that MPLS takes account.
 ```
