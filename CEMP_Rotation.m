@@ -7,7 +7,7 @@
 %% Ind: edge_num by 2 "edge indices matrix". Each row is the index of an edge (i,j). edge_num is the number of edges.
 %% RijMat: 3 by 3 by edge_num tensor that stores the given relative rotations
 %% CEMP_parameters.max_iter: the number of iterations of CEMP
-%% CEMP_parameters.beta: the sequence of reweighting parameter beta_t
+%% CEMP_parameters.reweighting: the sequence of reweighting parameter beta_t
 %% CEMP_parameters.nsample: the number of sampled cycles per edge
 
 %% Output:
