@@ -1,4 +1,3 @@
-rng(3)
 % generate synthetic data with uniform corruption
 
 model_out = Rotation_Graph_Generation(200,0.5,0.8,0,'uniform');
