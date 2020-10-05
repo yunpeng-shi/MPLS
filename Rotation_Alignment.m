@@ -8,7 +8,7 @@
 %% R_out   : R_est registered to R_gt using R_out = R_est*R_align
 %% Mean and Median error (geodesic distance in degree) of registration
 %% R_align: The right rotation for alignment (the only variable to be optimized)
-%%*************************************************************************
+
 
 function [R_out, R_align, mean_error, median_error] = Rotation_Alignment(R_est, R_gt)
 
@@ -35,4 +35,4 @@ function [R_out, R_align, mean_error, median_error] = Rotation_Alignment(R_est, 
     mean_error = mean(MSEVec);
     median_error = median(MSEVec);
 
-return
+end
