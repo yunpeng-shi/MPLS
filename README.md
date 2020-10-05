@@ -20,9 +20,10 @@ Please also see in the above file for different choices of parameters that we re
 CEMP_parameters.reweighting
 MPLS_parameters.reweighting
 ```
-is that: as the iteration # increases, both of them increases (or at least nondecreasing) and then stops at a fixed number between 20-50.
+is that:
+as the iteration # increases, both of them increases (or at least nondecreasing) and then stops at a fixed number between 20-50.
 
-
+## Dependencies
 The following files are dependencies for running Lie-Algebraic Averaging method that were written by AVISHEK CHATTERJEE (Included in this repo). See also [Robust Rotation Averaging](http://www.ee.iisc.ac.in/labs/cvl/papers/robustrelrotavg.pdf) and [Efficient and Robust Large-Scale Rotation Averaging](https://www.cv-foundation.org/openaccess/content_iccv_2013/papers/Chatterjee_Efficient_and_Robust_2013_ICCV_paper.pdf) for details.
 ```
 Weighted_LAA.m
