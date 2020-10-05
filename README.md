@@ -21,7 +21,21 @@ CEMP_parameters.reweighting
 MPLS_parameters.reweighting
 ```
 is that:
-as the iteration # increases, both of them increases (or at least nondecreasing) and then stops at a fixed number between 20-50.
+
+as the iteration # increases, both of them increases (or at least nondecreasing) and then stops at a fixed number between 20-50 (cannot increases to infinity due to numerical instability). 
+
+The following parameter determines the fraction of cycle-consistency information that MPLS takes account.
+```
+MPLS_parameters.cycle_info_ratio
+```
+That is,
+```
+Estimated_Corruption_Level = (1-MPLS_parameters.cycle_info_ratio) * Residual + MPLS_parameters.cycle_info_ratio * Cycle_Inconsistency
+
+```
+
+In general, one can take this parameter to 0 as iteration # increases. However, for denser graphs one can take it to 1 and completely ignore residual information. See Demo_MPLS.m for details. 
+
 
 ## Dependencies
 The following files are dependencies for running Lie-Algebraic Averaging method that were written by AVISHEK CHATTERJEE (revised and included in this repo). See also [Robust Rotation Averaging](http://www.ee.iisc.ac.in/labs/cvl/papers/robustrelrotavg.pdf) and [Efficient and Robust Large-Scale Rotation Averaging](https://www.cv-foundation.org/openaccess/content_iccv_2013/papers/Chatterjee_Efficient_and_Robust_2013_ICCV_paper.pdf) for details.
