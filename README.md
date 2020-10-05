@@ -7,11 +7,10 @@ This repo contains matlab files for implementing the method of the paper
 MPLS is a powerful alternative for the popular IRLS (Iteratively Reweighted Least Squares) algorithm. 
 
 ## Usage
-Download matlab files to the same directory. Run the following demo code.
+Download matlab files to the same directory. Checkout and run the following demo code. Please also see in the following file for different choices of parameters that we recommend.
 ```
 Demo_MPLS.m
 ```
-Please also see in above file for different choices of parameters that we recommend.
 
 
 The following files are dependencies for running Lie-Algebraic Averaging method that were written by AVISHEK CHATTERJEE (Included in this repo). See also [Robust Rotation Averaging](http://www.ee.iisc.ac.in/labs/cvl/papers/robustrelrotavg.pdf) and [https://www.cv-foundation.org/openaccess/content_iccv_2013/papers/Chatterjee_Efficient_and_Robust_2013_ICCV_paper.pdf](Efficient and Robust Large-Scale Rotation Averaging) for details.
