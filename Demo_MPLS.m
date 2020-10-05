@@ -1,7 +1,7 @@
 rng(3)
 % generate synthetic data with uniform corruption
 
-model_out = Rotation_Graph_Generation(200,0.5,0.85,0,'uniform');
+model_out = Rotation_Graph_Generation(200,0.5,0.8,0,'uniform');
 
 Ind = model_out.Ind; % matrix of edge indices (m by 2)
 RijMat = model_out.RijMat; % given corrupted and noisy relative rotations
