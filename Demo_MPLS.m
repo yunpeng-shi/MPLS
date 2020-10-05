@@ -12,7 +12,7 @@ CEMP_parameters.max_iter = 6;
 CEMP_parameters.reweighting = 2.^((1:6)-1);
 CEMP_parameters.nsample = 50;
 
-% set MPLS default parameters and options
+% set MPLS default parameters
 MPLS_parameters.stop_threshold = 1e-3;
 MPLS_parameters.max_iter = 100;
 MPLS_parameters.reweighting = CEMP_parameters.reweighting(end);
