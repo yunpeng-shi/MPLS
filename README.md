@@ -23,9 +23,9 @@ Please also see in the above file for different choices of parameters that we re
 CEMP_parameters.reweighting
 MPLS_parameters.reweighting
 ```
-is that:
+is the following:
 
-As the iteration # increases, both of them increases (or at least be nondecreasing) and then stops at a fixed number between 20-50 (cannot increases to infinity due to numerical instability). 
+As the iteration # increases, both of them increases (or at least be nondecreasing) and then stop at a constant between 20-50 (cannot increases to infinity due to numerical instability). 
 
 The following parameter determines the fraction of cycle-consistency information that MPLS takes account.
 ```
@@ -38,7 +38,7 @@ Estimated corruption level of each edge
 
 ```
 
-In general, one can take this parameter to 0 as iteration # increases. However, for denser graphs one can let it approach 1 and gradually ignore the residual information. See Demo_MPLS.m for details. 
+In general, one can take this parameter to 0 as iteration # increases. However, for denser graphs one may let it approach 1 and gradually ignore the residual information. See Demo_MPLS.m for details. 
 
 
 ## Dependencies
