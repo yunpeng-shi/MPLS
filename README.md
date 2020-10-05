@@ -23,20 +23,20 @@ MPLS_parameters.reweighting
 ```
 is that:
 
-as the iteration # increases, both of them increases (or at least nondecreasing) and then stops at a fixed number between 20-50 (cannot increases to infinity due to numerical instability). 
+As the iteration # increases, both of them increases (or at least nondecreasing) and then stops at a fixed number between 20-50 (cannot increases to infinity due to numerical instability). 
 
 The following parameter determines the fraction of cycle-consistency information that MPLS takes account.
 ```
 MPLS_parameters.cycle_info_ratio
 ```
-That is,
+That is, at each iteration
 ```
 Estimated corruption level of each edge
 = (1-MPLS_parameters.cycle_info_ratio) * Residual + MPLS_parameters.cycle_info_ratio * (Cycle inconsistency measure)
 
 ```
 
-In general, one can take this parameter to 0 as iteration # increases. However, for denser graphs one can take it to 1 and completely ignore residual information. See Demo_MPLS.m for details. 
+In general, one can take this parameter to 0 as iteration # increases. However, for denser graphs one can let it approach to 1 and gradually ignore the residual information. See Demo_MPLS.m for details. 
 
 
 ## Dependencies
