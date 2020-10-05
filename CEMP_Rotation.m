@@ -20,26 +20,28 @@
 
 
 
-function[SVec] = CEMP_rotation(Ind,RijMat,CEMP_parameters)
-    T=CEMP_parameters.max_iter;
-    beta_vec=CEMP_parameters.reweighting_parameters;
+function[SVec] = CEMP_Rotation(Ind,RijMat,CEMP_parameters)
+    %CEMP parameters
+    T=CEMP_parameters.max_iter; 
+    beta_cemp=CEMP_parameters.reweighting;
     nsample = CEMP_parameters.nsample;
-    T_beta = length(beta_vec);
+    T_beta = length(beta_cemp);
     if T_beta<T
-        beta_vec = [beta_vec,beta_vec(end)*(ones(1,T-T_beta))];
+        % if the reweighting parameter vector is short, then the rest of
+        % missing elements are set to constant
+        beta_cemp = [beta_cemp,beta_cemp(end)*(ones(1,T-T_beta))]; 
     end
             
-        Ind_i = Ind(:,1);
+    % building the graph   
+    Ind_i = Ind(:,1);
     Ind_j = Ind(:,2);
     n=max(Ind,[],'all');
     m=size(Ind_i,1);
-    AdjMat = sparse(Ind_i,Ind_j,1,n,n);
+    AdjMat = sparse(Ind_i,Ind_j,1,n,n); % Adjacency matrix
     AdjMat = full(AdjMat + AdjMat');
-    
-    disp('triangle sampling')
-    %compute cycle inconsistency
-
-
+        
+    % start CEMP iterations as initialization   
+    disp('sampling 3-cycles')
     % Matrix of codegree:
     % CoDeg(i,j) = 0 if i and j are not connected, otherwise,
     % CoDeg(i,j) = # of vertices that are connected to both i and j
@@ -61,76 +63,49 @@ function[SVec] = CEMP_rotation(Ind,RijMat,CEMP_parameters)
        CoIndMat(:,l)= datasample(find(AdjMat(:,i).*AdjMat(:,j)), nsample);
     end
 
-    disp('Triangle Sampling Finished!')
-
-   
+    disp('Sampling Finished!')
     disp('Initializing')
 
-    
-
-
-
     RijMat4d = zeros(3,3,n,n);
-    % store relative rotations in 3x3xnxn tensor
-    % construct edge index matrix (for 2d-to-1d index conversion)
     for l = 1:m
         i=Ind_i(l);j=Ind_j(l);
-        RijMat4d(:,:,i,j)=RijMat(:,:,l);
+        RijMat4d(:,:,i,j)=RijMat(:,:,l); % store relative rotations in 3x3xnxn tensor
         RijMat4d(:,:,j,i)=(RijMat(:,:,l))';
-        IndMat(i,j)=l;
+        IndMat(i,j)=l; % construct edge index matrix (for 2d-to-1d index conversion)
         IndMat(j,i)=-l;
     end
    
-
-
-   
-
-   
-    Rki0 = zeros(3,3,m,nsample);
+    % start computing cycle-inconsistency
+    Rki0 = zeros(3,3,m,nsample); % Rki0(:,:,l,s) is Rki if the s-th sampled cycle of edge ij (whose 1-d index is l) is ijk
     Rjk0 = zeros(3,3,m,nsample);
     for l = IndPos
     Rki0(:,:,l,:) = RijMat4d(:,:,CoIndMat(:,l), Ind_i(l));
     Rjk0(:,:,l,:) = RijMat4d(:,:,Ind_j(l),CoIndMat(:,l));
     end
-   
-
-   
-    
+ 
+    % reshape above matrices for easier multiplication
     Rki0Mat = reshape(Rki0,[3,3,m*nsample]);
     Rjk0Mat = reshape(Rjk0,[3,3,m*nsample]);
     Rij0Mat = reshape(kron(ones(1,nsample),reshape(RijMat,[3,3*m])), [3,3,m*nsample]);
-   
-
-    
     
     R_cycle0 = zeros(3,3,m*nsample);
     R_cycle = zeros(3,3,m*nsample);
     for j = 1:3
       R_cycle0 = R_cycle0 + bsxfun(@times,Rij0Mat(:,j,:),Rjk0Mat(j,:,:));
     end
-
     for j = 1:3
-      R_cycle = R_cycle + bsxfun(@times,R_cycle0(:,j,:),Rki0Mat(j,:,:));
-    end
-    
-    R_trace = (reshape(R_cycle(1,1,:)+R_cycle(2,2,:)+R_cycle(3,3,:), [m,nsample]))';
-    S0Mat = abs(acos((R_trace-1)./2))/pi;
-
-    
-
-    SVec = mean(S0Mat,1);
-    SVec(~IndPosbin)=1;
-    disp('Initialization completed!')
-
-
-    
+      R_cycle = R_cycle + bsxfun(@times,R_cycle0(:,j,:),Rki0Mat(j,:,:));  % R_cycle(:,:,s) stores Rij*Rjk*Rki for that cycle
+    end 
+    R_trace = (reshape(R_cycle(1,1,:)+R_cycle(2,2,:)+R_cycle(3,3,:), [m,nsample]))'; % R_trace(l,s) stores Tr(Rij*Rjk*Rki) for that cycle
+    S0Mat = abs(acos((R_trace-1)./2))/pi;   % S0Mat(l,s) stores d(Rij*Rjk*Rki, I) for that cycle. d is the normalized geodesic distance.
+    SVec = mean(S0Mat,1); % initialized corruption level estimates s_{ij,0}
+    SVec(~IndPosbin)=1; % If there is no 3-cycle for that edge, then set its sij as 1 (the largest possible).
+    disp('Initialization completed!')  
     disp('Reweighting Procedure Started ...')
 
-
-   for iter = 1:T
-       
+   for iter = 1:T     
         % parameter controling the decay rate of reweighting function
-        beta = beta_vec(iter);
+        beta = beta_cemp(iter);
         Ski = zeros(nsample, m);
         Sjk = zeros(nsample, m);
         for l = IndPos
@@ -139,7 +114,7 @@ function[SVec] = CEMP_rotation(Ind,RijMat,CEMP_parameters)
             Sjk(:,l) = SVec(abs(IndMat(j,CoIndMat(:,l))));
         end
         Smax = Ski+Sjk;
-        % compute weight matrix (nsample by m)
+        % compute cycle-weight matrix (nsample by m)
         WeightMat = exp(-beta*Smax);
         weightsum = sum(WeightMat,1);
         % normalize so that each column sum up to 1
@@ -149,12 +124,8 @@ function[SVec] = CEMP_rotation(Ind,RijMat,CEMP_parameters)
         SVec = sum(SMat,1);
         SVec(~IndPosbin)=1;
         fprintf('Reweighting Iteration %d Completed!\n',iter)   
-
-    end
-
+   end
         disp('Completed!')
         
-       
-  
 
 end

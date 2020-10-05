@@ -1,3 +1,8 @@
+%% Original Author: AVISHEK CHATTERJEE
+%% Taken from the code of AVISHEK CHATTERJEE for Lie-Algebraic Averaging
+%% This code aims to build the A matrix for the least squares solver min||Ax-b||^2 for rotation averaging
+%% Reference: "Efficient and Robust Large-Scale Rotation Averaging." by Avishek Chatterjee, Venu Madhav Govindu.
+
 function[Amatrix] = Build_Amatrix(I)
         m=size(I,2);
         N=max(max(I));

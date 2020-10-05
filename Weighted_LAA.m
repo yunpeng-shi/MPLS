@@ -1,3 +1,6 @@
+%% Original Author: AVISHEK CHATTERJEE
+%% Revised from the code of AVISHEK CHATTERJEE for Lie-Algebraic Averaging
+%% Reference: "Efficient and Robust Large-Scale Rotation Averaging." by Avishek Chatterjee, Venu Madhav Govindu.
 function[Q,W,B,score] = Weighted_LAA(I,Q,QQ,Amatrix,Weights)
             N=max(max(I));
             w=zeros(size(QQ,1),4);W=zeros(N,4);
