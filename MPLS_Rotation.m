@@ -192,7 +192,7 @@ function[R_est, R_init] = MPLS_Rotation(Ind,RijMat,CEMP_parameters, MPLS_paramet
         
         % transform the data format for the following Lie-Alegbraic
         % Averaging (LAA) solver that was written by AVISHEK CHATTERJEE
-        RR = permute(RijMat, [2,1,3]); % relative rotations -- take transpose as the LAA code estimates R'
+        RR = permute(RijMat, [2,1,3]); % relative rotations -- take transpose as the original LAA code estimates R' in our setting
         Ind_T = Ind'; % indices matrix
         R_init = R_est; % use CEMP+MST as initialization for R        
         % Formation of A matrix.
@@ -211,7 +211,7 @@ function[R_est, R_init] = MPLS_Rotation(Ind,RijMat,CEMP_parameters, MPLS_paramet
         disp('Start MPLS reweighting ...')
         % start MPLS reweighting iterations
         while((score>stop_threshold)&&(Iteration<maxIters))
-             % one iteration of Weighted Lie-Algebraic Averaging                 
+             % one iteration of Weighted Lie-Algebraic Averaging (by AVISHEK CHATTERJEE)                
             [Q,W,B,score] = Weighted_LAA(Ind_T,Q,QQ,Amatrix,Weights); 
             E=(Amatrix*W(2:end,2:4)-B); 
             ResVec = sqrt(sum(E.^2,2))/pi; % normalized residual rij for all edges
