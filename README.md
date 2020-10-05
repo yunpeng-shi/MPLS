@@ -9,4 +9,4 @@ Download matlab files to the same directory. Run the following demo code.
 ```
 Demo_MPLS.m
 ```
-Please see also in Demo_MPLS.m for different choices of parameters that we recommend.
+Please see also in above file for different choices of parameters that we recommend.
