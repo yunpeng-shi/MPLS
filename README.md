@@ -1,6 +1,8 @@
 # MPLS (Minneapolis) Framework for Robust Rotation Averaging
 
-## Intro and References
+## Introduction and References
+
+MPLS is a powerful alternative to the popular IRLS (Iteratively Reweighted Least Squares) algorithm for solving the general problem of group synchronization (and rotation averaging as a special case).
 
 This repo contains matlab files for implementing the method of the papers
 
@@ -8,7 +10,7 @@ This repo contains matlab files for implementing the method of the papers
 
 [Robust Group Synchronization via Cycle-Edge Message Passing](https://arxiv.org/pdf/1912.11347.pdf), Gilad Lerman and Yunpeng Shi, arXiv preprint, 2019.
 
-MPLS is a powerful alternative to the popular IRLS (Iteratively Reweighted Least Squares) algorithm for solving the general problem of group synchronization (and rotation averaging as a special case).
+If you would like to use our code for your paper, please cite the above two works.
 
 ## Usage
 Download matlab files to the same directory. Checkout and run the following demo code. 
