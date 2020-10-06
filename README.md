@@ -38,7 +38,7 @@ Estimated corruption level of each edge
 
 ```
 
-In general, one can take this parameter to 0 as iteration # increases. However, for denser graphs one may let it approach 1 and gradually ignore the residual information. See Demo_MPLS.m for details. 
+In general, one can take this parameter to 0 as iteration # increases. However, for some dense graphs one may let it approach 1 and gradually ignore the residual information. See Demo_MPLS.m for details. 
 
 
 ## Dependencies
