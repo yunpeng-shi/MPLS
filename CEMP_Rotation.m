@@ -4,8 +4,9 @@
 %% Cycle-Edge Message Passing for Rotation Synchronization
 %%------------------------------------------------
 %% Input Parameters: 
-%% Ind: edge_num by 2 "edge indices matrix". Each row is the index of an edge (i,j). edge_num is the number of edges.
-%% RijMat: 3 by 3 by edge_num tensor that stores the given relative rotations
+%% Ind: edge_num by 2 "edge indices matrix". Each row is the index of an edge (i,j) that is sorted as (1,2), (1,3), (1,4),... (2,3), (2,4),.... 
+%% edge_num is the number of edges.
+%% RijMat: 3 by 3 by edge_num tensor that stores the given relative rotations corresponding to Ind
 %% CEMP_parameters.max_iter: the number of iterations of CEMP
 %% CEMP_parameters.reweighting: the sequence of reweighting parameter beta_t
 %% CEMP_parameters.nsample: the number of sampled cycles per edge
