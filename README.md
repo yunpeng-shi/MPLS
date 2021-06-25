@@ -17,6 +17,12 @@ Download matlab files to the same directory. Checkout and run the following demo
 ```
 Demo_MPLS.m
 ```
+The demo code uses the function
+```
+MPLS_rotation(Ind, Rij, CEMP_parameters, MPLS_parameters)
+```
+Each row of ``Ind`` matrix is an edge index (i,j). The edge indices (the rows of Ind) must be sorted in row-major order. That is, the edge indices are sorted as (1,2), (1,3), (1,4),..., (2,3), (2,5), (2,8),..., otherwise the code may crash when some edges are not contained in any 3-cycles. Make sure that i<j. If some edges have indices (3,1), then change it to (1,3) and take a transpose to the corresponding Rij.
+
 ## Choices of Parameters
 Please also see in the above file for different choices of parameters that we recommend. MPLS is not sensitive to those parameters. The general rule for reweighting parameters
 ```
