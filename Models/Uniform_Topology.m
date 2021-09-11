@@ -8,7 +8,7 @@
 %% p: the probability of connecting a pair of vertices. G([n],E) is Erdos-Renyi graph G(n,p).
 %% q: the probability of corrupting an edge
 %% sigma: the noise level (>0)
-%% model (optional): choose 'uniform' or 'self-consistent'. The default choice is 'uniform'.
+%% crpt_type (optional): choose 'uniform' or 'self-consistent'. The default choice is 'uniform'.
 
 %% Output:
 %% model_out.AdjMat: n by n adjacency matrix of the generated graph
