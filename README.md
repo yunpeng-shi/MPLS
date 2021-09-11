@@ -36,7 +36,7 @@ Here ``Spectral`` refers to eigenvector method for approximately solving least s
 
 ``IRLS-GM`` refers to iteratively reweighted least squares (IRLS) that uses Geman-McClure loss function. See [Efficient and Robust Large-Scale Rotation Averaging](https://www.cv-foundation.org/openaccess/content_iccv_2013/papers/Chatterjee_Efficient_and_Robust_2013_ICCV_paper.pdf), Avishek Chatterjee and Venu Madhav Govindu, ICCV 2013 for details.
 
-``IRLS-GM`` refers to iteratively reweighted least squares (IRLS) that uses L_1/2 loss function. See [Robust Relative Rotation Averaging](http://www.ee.iisc.ac.in/labs/cvl/papers/robustrelrotavg.pdf), Avishek Chatterjee and Venu Madhav Govindu, TPAMI, 2018 for details.
+``IRLS-L0.5`` refers to iteratively reweighted least squares (IRLS) that uses L_1/2 loss function. See [Robust Relative Rotation Averaging](http://www.ee.iisc.ac.in/labs/cvl/papers/robustrelrotavg.pdf), Avishek Chatterjee and Venu Madhav Govindu, TPAMI, 2018 for details.
 
 ``CEMP+MST``, ``CEMP+GCW``, ``MPLS`` refers to our methods. ``CEMP+GCW`` only appears in CEMP paper [Robust Group Synchronization via Cycle-Edge Message Passing](https://link.springer.com/content/pdf/10.1007/s10208-021-09532-w.pdf), Gilad Lerman and Yunpeng Shi, Foundations of Computational Mathematics, 2021. It combines CEMP with a weighted spectral method (using graph connection weight matrix).
 
