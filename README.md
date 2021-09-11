@@ -2,7 +2,7 @@
 
 ## Introduction and References
 
-MPLS is a powerful alternative to the popular IRLS (Iteratively Reweighted Least Squares) algorithm for solving the general problem of group synchronization (and rotation averaging as a special case).
+Message Passing Least Squares (MPLS) is a powerful alternative to the popular teratively Reweighted Least Squares (IRLS) algorithm for solving the general problem of group synchronization (and rotation averaging as a special case).
 
 This repo contains matlab files for implementing the method of the following papers
 
