@@ -40,7 +40,7 @@ Here ``Spectral`` refers to eigenvector method for approximately solving least s
 
 ``CEMP+MST``, ``CEMP+GCW``, ``MPLS`` refers to our methods. ``CEMP+GCW`` only appears in CEMP paper [Robust Group Synchronization via Cycle-Edge Message Passing](https://link.springer.com/content/pdf/10.1007/s10208-021-09532-w.pdf), Gilad Lerman and Yunpeng Shi, Foundations of Computational Mathematics, 2021. It combines CEMP with a weighted spectral method (using graph connection weight matrix).
 
-## Various Corruption Models
+## A Variety of Corruption Models
 We provide 5 different corruption models. 3 for nonuniform topology and 2 for uniform toplogy (see ``Uniform_Topology.m`` and ``Nonuniform_Topology.m``). Uniform/Nonuniform toplogy refers to whether the corrupted subgraph is Erdos Renyi or not. In other words, the choice of Uniform/Nonuniform toplogy decides how to select edges for corruption. In ``Uniform_Topology.m``, two nodes are connected with probability ``p``. Then edges are independently drawn with probability ``q`` for corruption. In ``Nonuniform_Topology.m``, two nodes are connected with probability ``p``. Then with probability ``p_node_crpt`` a node is selected so that its neighboring edges are candidates for corruption. Next, for each selected node, with probability ``p_edge_crpt`` an edge (among the neighboring edges of the selected node) is corrupted. This is a more malicious scenario where corrupted edges have cluster behavior (so local coruption level can be extremely high). 
 
 One can also optionally add noise to inlier graph and outlier graph through setting ``sigma_in`` and ``sigma_out``.
