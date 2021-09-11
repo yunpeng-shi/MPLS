@@ -1,5 +1,7 @@
 % parameters with uniform topology
-n =200; p=0.5; q=0.8; sigma=0; model='uniform';
+% n =200; p=0.5; q=0.8; sigma=0; crpt_type='uniform';
+
+
 % parameters with nonuniform topology
 p_node_crpt=0.5; p_edge_crpt=0.75; sigma_in=0; sigma_out=4; crpt_type='adv';
 
