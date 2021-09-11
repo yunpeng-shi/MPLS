@@ -1,11 +1,6 @@
 % parameters with uniform topology
 % n =200; p=0.5; q=0.8; sigma=0; crpt_type='uniform';
 
-
-% parameters with nonuniform topology
-p_node_crpt=0.5; p_edge_crpt=0.75; sigma_in=0; sigma_out=4; crpt_type='adv';
-
-
 % use the following commented line to generate data with uniform topology
 % model_out = Uniform_Topology(n,p,q,sigma,model);
 
@@ -13,15 +8,19 @@ p_node_crpt=0.5; p_edge_crpt=0.75; sigma_in=0; sigma_out=4; crpt_type='adv';
 % q=0.45;
 % model_out = Uniform_Topology(n,p,q,sigma,'self-consistent');
 
+
 % The following code is for nonuniform topology. This is a more malicious
 % scenario where corrupted edges have cluster behavior (so local coruption
 % level can be extremely high)
+
+% parameters with nonuniform topology
+p_node_crpt=0.5; p_edge_crpt=0.75; sigma_in=0; sigma_out=4; crpt_type='adv';
 model_out = Nonuniform_Topology(n,p, p_node_crpt,p_edge_crpt, sigma_in, sigma_out, crpt_type);
 
 Ind = model_out.Ind; % matrix of edge indices (m by 2)
 RijMat = model_out.RijMat; % given corrupted and noisy relative rotations
 ErrVec = model_out.ErrVec; % ground truth corruption levels
-R_orig = model_out.R_orig; % ground truth rotations
+R_orig = model_out.R_orig; % ground truth absolute rotations
 
 % set CEMP defult parameters
 CEMP_parameters.max_iter = 6;
@@ -31,8 +30,8 @@ CEMP_parameters.nsample = 50;
 % set MPLS default parameters
 MPLS_parameters.stop_threshold = 1e-3;
 MPLS_parameters.max_iter = 100;
-MPLS_parameters.reweighting = CEMP_parameters.reweighting(end);
 MPLS_parameters.thresholding = [0.95,0.9,0.85,0.8];
+MPLS_parameters.reweighting = CEMP_parameters.reweighting(end);
 MPLS_parameters.cycle_info_ratio = 1./((1:MPLS_parameters.max_iter)+1);
 
 % For dense graphs with sufficient uncorrupted 3-cycles for all edges, 
