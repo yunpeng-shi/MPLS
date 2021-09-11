@@ -17,7 +17,7 @@ Download matlab files to the same directory. Checkout and run the following demo
 ```
 Examples/Compare_algorithms.m
 ```
-The following is the sample output under Nonuniform and Adversarial corruption, which shows great advantage of CEMP and MPLS:
+The following is a sample output (error in degrees) under Nonuniform and Adversarial corruption, which shows great advantage of CEMP and MPLS:
 
 ```
 Algorithms     MeanError     MedianError
