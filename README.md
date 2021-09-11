@@ -31,6 +31,15 @@ ___________    __________    ___________
 "MPLS"         3.0585e-06    2.4148e-06 
 
 ```
+
+Here ``Spectral`` refers to eigenvector method for approximately solving least squares formulation. See [Angular Synchronization by Eigenvectors and Semidefinite Programming,](https://arxiv.org/abs/0905.3174) Amit Singer, Applied and Computational Harmonic Analysis, 2011 for details.
+
+``IRLS-GM`` refers to iteratively reweighted least squares (IRLS) that uses Geman-McClure loss function. See [Efficient and Robust Large-Scale Rotation Averaging](https://www.cv-foundation.org/openaccess/content_iccv_2013/papers/Chatterjee_Efficient_and_Robust_2013_ICCV_paper.pdf), Avishek Chatterjee and Venu Madhav Govindu, ICCV 2013 for details.
+
+``IRLS-GM`` refers to iteratively reweighted least squares (IRLS) that uses L_1/2 loss function. See [Robust Relative Rotation Averaging](http://www.ee.iisc.ac.in/labs/cvl/papers/robustrelrotavg.pdf), Avishek Chatterjee and Venu Madhav Govindu, TPAMI, 2018 for details.
+
+``CEMP+MST``, ``CEMP+GCW``, ``MPLS`` refers to our methods. ``CEMP+GCW`` only appears in CEMP paper [Robust Group Synchronization via Cycle-Edge Message Passing](https://link.springer.com/content/pdf/10.1007/s10208-021-09532-w.pdf), Gilad Lerman and Yunpeng Shi, Foundations of Computational Mathematics, 2021. It combines CEMP with a weighted spectral method (using graph connection weight matrix).
+
 ## Various Corruption Models
 We provide 5 different corruption models. 3 for nonuniform topology and 2 for uniform toplogy (see ``Uniform_Topology.m`` and ``Nonuniform_Topology.m``). Uniform/Nonuniform toplogy refers to whether the corrupted subgraph is Erdos Renyi or not. In other words, the choice of Uniform/Nonuniform toplogy decides how to select edges for corruption. In ``Uniform_Topology.m``, two nodes are connected with probability ``p``. Then edges are independently drawn with probability ``q`` for corruption. In ``Nonuniform_Topology.m``, two nodes are connected with probability ``p``. Then with probability ``p_node_crpt`` a node is selected so that its neighboring edges are candidates for corruption. Next, for each selected node, with probability ``p_edge_crpt`` an edge (among the neighboring edges of the selected node) is corrupted. This is a more malicious scenario where corrupted edges have cluster behavior (so local coruption level can be extremely high). 
 
