@@ -17,6 +17,22 @@ Download matlab files to the same directory. Checkout and run the following demo
 ```
 Examples/Compare_algorithms.m
 ```
+The following is the sample output under Nonuniform and Adversarial corruption, which shows great advantage of CEMP and MPLS:
+
+```
+Algorithms     MeanError     MedianError
+___________    __________    ___________
+
+"Spectral"         13.745        4.4287 
+"IRLS-GM"           34.54        1.9641 
+"IRLS-L0.5"        5.0656       0.96395 
+"CEMP+MST"     2.2115e-06    2.4148e-06 
+"CEMP+GCW"       0.010659     0.0034167 
+"MPLS"          0.0001131     5.622e-05 
+
+```
+
+
 The demo code uses the function
 ```
 MPLS(Ind, RijMat, CEMP_parameters, MPLS_parameters)
