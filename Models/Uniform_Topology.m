@@ -21,9 +21,9 @@
 %% [1] Yunpeng Shi and Gilad Lerman. "Message Passing Least Squares Framework and its Application to Rotation Synchronization" ICML 2020.
 
 
-function[model_out]=Uniform_Topology(n,p,q,sigma,model)
-    if ~exist('model','var')
-        model = 'uniform';
+function[model_out]=Uniform_Topology(n,p,q,sigma,crpt_type)
+    if ~exist('crpt_type','var')
+        crpt_type = 'uniform';
     end
     
     G = rand(n,n) < p;
@@ -73,7 +73,7 @@ function[model_out]=Uniform_Topology(n,p,q,sigma,model)
         R_corr(:,:,i)=U*S0*V';
     end
 
-    if strcmp(model,'uniform')
+    if strcmp(crpt_type,'uniform')
         for k = corrInd
             Q=randn(3);
             [U, ~, V]= svd(Q);
