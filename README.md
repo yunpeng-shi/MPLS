@@ -47,7 +47,7 @@ In ``Nonuniform_Topology.m``, there are the following 3 options of ``crpt_type``
 
 
 
-## Choices of Parameters
+## Implementation of MPLS
 
 The demo code uses the following function for implementing MPLS:
 ```
