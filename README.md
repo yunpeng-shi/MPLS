@@ -31,13 +31,26 @@ ___________    __________    ___________
 "MPLS"          0.0001131     5.622e-05 
 
 ```
+## Various Corruption Models
+We provide 5 different corruption models. 3 for nonuniform topology and 2 for uniform toplogy (see ``Uniform_Topology.m`` and ``Nonuniform_Topology.m``). Uniform/Nonuniform toplogy refers to whether the corrupted subgraph is Erdos Renyi or not. In other words, the choice of Uniform/Nonuniform toplogy decides how to select edges for corruption. In ``Uniform_Topology.m``, two nodes are connected with probability ``p``. Then edges are independently drawn with probability ``q`` for corruption. In ``Nonuniform_Topology.m``, two nodes are connected with probability ``p``. Then with probability ``p_node_crpt`` a node is selected so that its neighboring edges are candidates for corruption. Next, for each selected node, with probability ``p_edge_crpt`` an edge (among the neighboring edges of the selected node) is corrupted. This is a more malicious scenario where corrupted edges have cluster behavior (so local coruption level can be extremely high). 
 
+One can also optionally add noise to inlier graph and outlier graph through setting ``sigma_in`` and ``sigma_out``.
+
+The argument ``crpt_type`` in the two functions determines how the corrupted relative rotations are generated for those selected edges. In ``Uniform_Topology.m``, there are 2 options of ``crpt_type``: ``uniform`` and ``self-consistent``.
+In ``Nonuniform_Topology.m``, there are the following 3 options of ``crpt_type``.
+
+``uniform``: The corrupted relative permutations <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij}}"> are i.i.d follows uniform distribution over the space of SO(3).
+
+``self-consistent``: The corrupted <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij}}"> are relative rotations of another set of absolute rotations. Namely <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij} = R_i^{crpt} R_j^{crpt}'}"> where those absolute rotations are different from the ground truth and are i.i.d drawn from the uniform distribution in the space of SO(3). In this way, the corrupted relative rotations are also cycle-consistent.
+
+``adv``: Extremely malicious corruption that replaces the underlying absolute rotations from ground truth <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_i^*}"> to <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_i^{crpt}}">. Namely <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij} = R_i^{crpt} R_j^{* }'}">. Additional high noise is added to the corruption, otherwise the recovery of the ground truth can be ill-posed.
 
 The demo code uses the following function for implementing MPLS:
 ```
 MPLS(Ind, RijMat, CEMP_parameters, MPLS_parameters)
 ```
 Each row of ``Ind`` matrix is an edge index (i,j). The edge indices (the rows of Ind) MUST be sorted in ``row-major order``. That is, the edge indices are sorted as (1,2), (1,3), (1,4),..., (2,3), (2,5), (2,8),..., otherwise the code may crash when some edges are not contained in any 3-cycles. Make sure that i<j. If some edges have indices (3,1), then change it to (1,3) and take a transpose to the corresponding Rij.
+
 
 ## Choices of Parameters
 Please also see in the above file for different choices of parameters that we recommend. MPLS is not sensitive to those parameters. The general rule for reweighting parameters
