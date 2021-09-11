@@ -45,6 +45,10 @@ In ``Nonuniform_Topology.m``, there are the following 3 options of ``crpt_type``
 
 ``adv``: Extremely malicious corruption that replaces the underlying absolute rotations from ground truth <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_i^*}"> to <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_i^{crpt}}">. Namely <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij} = R_i^{crpt} R_j^{* }'}">. Additional high noise is added to the corruption, otherwise the recovery of the ground truth can be ill-posed.
 
+
+
+## Choices of Parameters
+
 The demo code uses the following function for implementing MPLS:
 ```
 MPLS(Ind, RijMat, CEMP_parameters, MPLS_parameters)
@@ -52,8 +56,7 @@ MPLS(Ind, RijMat, CEMP_parameters, MPLS_parameters)
 Each row of ``Ind`` matrix is an edge index (i,j). The edge indices (the rows of Ind) MUST be sorted in ``row-major order``. That is, the edge indices are sorted as (1,2), (1,3), (1,4),..., (2,3), (2,5), (2,8),..., otherwise the code may crash when some edges are not contained in any 3-cycles. Make sure that i<j. If some edges have indices (3,1), then change it to (1,3) and take a transpose to the corresponding Rij.
 
 
-## Choices of Parameters
-Please also see in the above file for different choices of parameters that we recommend. MPLS is not sensitive to those parameters. The general rule for reweighting parameters
+MPLS is not sensitive to its parameters. The general rule for reweighting parameters
 ```
 CEMP_parameters.reweighting
 MPLS_parameters.reweighting
