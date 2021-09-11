@@ -43,7 +43,7 @@ Here ``Spectral`` refers to eigenvector method for approximately solving least s
 ## A Variety of Corruption Models
 We provide 5 different corruption models. 3 for nonuniform topology and 2 for uniform toplogy (see ``Uniform_Topology.m`` and ``Nonuniform_Topology.m``). Uniform/Nonuniform toplogy refers to whether the corrupted subgraph is Erdos Renyi or not. In other words, the choice of Uniform/Nonuniform toplogy decides how to select edges for corruption. In ``Uniform_Topology.m``, two nodes are connected with probability ``p``. Then edges are independently drawn with probability ``q`` for corruption. In ``Nonuniform_Topology.m``, two nodes are connected with probability ``p``. Then with probability ``p_node_crpt`` a node is selected so that its neighboring edges are candidates for corruption. Next, for each selected node, with probability ``p_edge_crpt`` an edge (among the neighboring edges of the selected node) is corrupted. This is a more malicious scenario where corrupted edges have cluster behavior (so local coruption level can be extremely high). 
 
-One can also optionally add noise to inlier graph and outlier graph through setting ``sigma_in`` and ``sigma_out``.
+One can also optionally add noise to inlier graph and outlier graph through setting ``sigma_in`` and ``sigma_out`` for ``Nonuniform_Topology.m``. For ``Uniform_Topology.m`` we assume inlier and outlier subgraph have the same noise level ``sigma``.
 
 The argument ``crpt_type`` in the two functions determines how the corrupted relative rotations are generated for those selected edges. In ``Uniform_Topology.m``, there are 2 options of ``crpt_type``: ``uniform`` and ``self-consistent``.
 In ``Nonuniform_Topology.m``, there are the following 3 options of ``crpt_type``.
