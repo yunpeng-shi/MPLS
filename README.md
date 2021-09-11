@@ -23,12 +23,12 @@ The following is a sample output (error in degrees) under Nonuniform and Adversa
 Algorithms     MeanError     MedianError
 ___________    __________    ___________
 
-"Spectral"         13.745        4.4287 
-"IRLS-GM"           34.54        1.9641 
-"IRLS-L0.5"        5.0656       0.96395 
-"CEMP+MST"     2.2115e-06    2.4148e-06 
-"CEMP+GCW"       0.010659     0.0034167 
-"MPLS"          0.0001131     5.622e-05 
+"Spectral"         13.071         3.902 
+"IRLS-GM"          34.093        3.3797 
+"IRLS-L0.5"        5.4121       0.57141 
+"CEMP+MST"     1.9138e-06    1.7075e-06 
+"CEMP+GCW"       0.014078     0.0043606 
+"MPLS"         3.0585e-06    2.4148e-06 
 
 ```
 ## Various Corruption Models
