@@ -15,11 +15,11 @@ If you would like to use our code for your paper, please cite the above two work
 ## Usage
 Download matlab files to the same directory. Checkout and run the following demo code. 
 ```
-Demo_MPLS.m
+Examples/Compare_algorithms.m
 ```
 The demo code uses the function
 ```
-MPLS_rotation(Ind, RijMat, CEMP_parameters, MPLS_parameters)
+MPLS(Ind, RijMat, CEMP_parameters, MPLS_parameters)
 ```
 Each row of ``Ind`` matrix is an edge index (i,j). The edge indices (the rows of Ind) MUST be sorted in ``row-major order``. That is, the edge indices are sorted as (1,2), (1,3), (1,4),..., (2,3), (2,5), (2,8),..., otherwise the code may crash when some edges are not contained in any 3-cycles. Make sure that i<j. If some edges have indices (3,1), then change it to (1,3) and take a transpose to the corresponding Rij.
 
@@ -44,7 +44,17 @@ Estimated corruption level of each edge
 
 ```
 
-In general, one can take this parameter to 0 as iteration # increases. However, for some dense graphs one may let it approach 1 and gradually ignore the residual information. See Demo_MPLS.m for details. 
+For sparse graphs (in many real scenarios) we recommend (rely more on residuals)
+```
+MPLS_parameters.reweighting = CEMP_parameters.reweighting(end);
+MPLS_parameters.cycle_info_ratio = 1./((1:MPLS_parameters.max_iter)+1); % in the end ignore 3-cycle information
+```
+
+For very dense graphs, we find the following parameters perform better (rely more on 3-cycle information)
+```
+MPLS_parameters.reweighting = 0.1*1.5.^((1:15)-1);    % more and more aggressive reweighting
+MPLS_parameters.cycle_info_ratio = 1-1./((1:MPLS_parameters.max_iter)+1); % in the end focus only on 3-cycle information
+```
 
 
 ## Dependencies
@@ -54,4 +64,7 @@ Weighted_LAA.m
 Build_Amatrix.m
 R2Q.m
 q2R.m
+BoxMedianSO3Graph.m
+L12.m
+RobustMeanSO3Graph.m
 ```
