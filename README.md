@@ -33,7 +33,7 @@ ___________    __________    ___________
 ```
 
 
-The demo code uses the function
+The demo code uses the following function for implementing MPLS:
 ```
 MPLS(Ind, RijMat, CEMP_parameters, MPLS_parameters)
 ```
