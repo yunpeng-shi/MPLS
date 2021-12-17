@@ -14,7 +14,7 @@
 % level can be extremely high)
 
 % parameters with nonuniform topology
-p_node_crpt=0.5; p_edge_crpt=0.75; sigma_in=0; sigma_out=4; crpt_type='adv';
+n=200; p=0.5; p_node_crpt=0.5; p_edge_crpt=0.75; sigma_in=0; sigma_out=4; crpt_type='adv';
 model_out = Nonuniform_Topology(n,p, p_node_crpt,p_edge_crpt, sigma_in, sigma_out, crpt_type);
 
 Ind = model_out.Ind; % matrix of edge indices (m by 2)
