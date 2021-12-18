@@ -48,7 +48,7 @@ One can also optionally add noise to inlier graph and outlier graph through sett
 The argument ``crpt_type`` in the two functions determines how the corrupted relative rotations are generated for those selected edges. In ``Uniform_Topology.m``, there are 2 options of ``crpt_type``: ``uniform`` and ``self-consistent``.
 In ``Nonuniform_Topology.m``, there are the following 3 options of ``crpt_type``.
 
-``uniform``: The corrupted relative permutations <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij}}"> are i.i.d follows uniform distribution over the space of SO(3).
+``uniform``: The corrupted relative rotations <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij}}"> are i.i.d follows uniform distribution over the space of SO(3).
 
 ``self-consistent``: The corrupted <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij}}"> are relative rotations of another set of absolute rotations. Namely <img src="https://render.githubusercontent.com/render/math?math=\color{red} \mathbf{R_{ij} = R_i^{crpt} R_j^{crpt}'}"> where those absolute rotations are different from the ground truth and are i.i.d drawn from the uniform distribution in the space of SO(3). In this way, the corrupted relative rotations are also cycle-consistent.
 
