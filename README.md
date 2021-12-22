@@ -8,10 +8,18 @@ This repo contains matlab files for implementing the method of the following pap
 
 [[1] Message Passing Least Squares Framework and Its Applications in Rotation Synchronization](http://proceedings.mlr.press/v119/shi20b/shi20b.pdf), Yunpeng Shi and Gilad Lerman, ICML 2020.
 
+If you would like to use our code for your paper, please cite [1]. 
+
 A closely related work to [1] is 
+
 [[2] Robust Group Synchronization via Cycle-Edge Message Passing](https://link.springer.com/content/pdf/10.1007/s10208-021-09532-w.pdf), Gilad Lerman and Yunpeng Shi, Foundations of Computational Mathematics, 2021.
 
-If you would like to use our code for your paper, please cite the above two works. 
+The main difference is that in [2] we study cycle-edge message passing (not MPLS) for general compact groups (so it has broader applications), and it uses all 3-cycles (so it is deterministic, unlike MPLS that randomly samples cycles). We include its code in [CEMP repository](https://github.com/yunpeng-shi/CEMP).
+
+Another MPLS-type algorithm for permutation synchronization appears in [Robust Multi-object Matching via Iterative Reweighting of the Graph Connection Laplacian](https://proceedings.neurips.cc/paper/2020/hash/ae06fbdc519bddaa88aa1b24bace4500-Abstract.html). Yunpeng Shi, Shaohan Li, Gilad Lerman. NeurIPS 2020. Its code is available in [IRGCL repository](https://github.com/yunpeng-shi/IRGCL).
+
+
+
 
 ## Usage
 Download matlab files to the same directory. Checkout and run the following demo code. 
