@@ -106,6 +106,7 @@ MPLS_parameters.reweighting = 0.1*1.5.^((1:15)-1);    % more and more aggressive
 MPLS_parameters.cycle_info_ratio = 1-1./((1:MPLS_parameters.max_iter)+1); % in the end focus only on 3-cycle information
 ```
 
+For real data experiments we used the data provided by the authors of [https://openaccess.thecvf.com/content_cvpr_2017/papers/Sengupta_A_New_Rank_CVPR_2017_paper.pdf](https://openaccess.thecvf.com/content_cvpr_2017/papers/Sengupta_A_New_Rank_CVPR_2017_paper.pdf). The random seed was chosen as 2020 (as it was submitted to ICML 2020).
 
 ## Dependencies
 The following files in folder ``Utils`` are dependencies for running Lie-Algebraic Averaging method that were written by AVISHEK CHATTERJEE (revised and included in this repo). See also [Robust Rotation Averaging](http://www.ee.iisc.ac.in/labs/cvl/papers/robustrelrotavg.pdf) and [Efficient and Robust Large-Scale Rotation Averaging](https://www.cv-foundation.org/openaccess/content_iccv_2013/papers/Chatterjee_Efficient_and_Robust_2013_ICCV_paper.pdf) for details.
