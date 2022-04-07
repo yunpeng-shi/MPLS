@@ -1,5 +1,8 @@
 # MPLS (Minneapolis) Framework for Robust Rotation Averaging
 
+## News:
+The python3 version of CEMP-SO(3) for rotation averaging is released at [CEMP_SO3_Python](https://github.com/MattyChoi/CEMP_SO3_Python) !
+
 ## Introduction and References
 
 Message Passing Least Squares (MPLS) is a powerful alternative to the popular iteratively Reweighted Least Squares (IRLS) algorithm for solving the general problem of group synchronization (and rotation averaging as a special case).
