@@ -160,8 +160,12 @@ function[R_est, R_init] = MPLS(Ind,RijMat,CEMP_parameters, MPLS_parameters)
         % find the minimum spanning tree given SVec-weighted graph
         disp('Building minimum spanning tree ...')
         SMatij = sparse(Ind_j,Ind_i,SVec+1,n,n);
-        [MST,~]=graphminspantree(SMatij);
-        AdjTree = logical(MST+MST');
+%         [MST,~]=graphminspantree(SMatij);  This is the legacy code for matlab versions before 2020a
+%         AdjTree = logical(MST+MST');
+        
+        G = graph(SMatij,'lower'); % These 3 lines are compatible with new matlab versions
+        Tree = minspantree(G);
+        AdjTree = adjacency(Tree);
         
         % compute Ri by multiplying Rij along the spanning tree
         rootnodes = 1;
