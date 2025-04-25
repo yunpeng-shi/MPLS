@@ -1,6 +1,8 @@
 # MPLS (Minneapolis) Framework for Robust Rotation Averaging
 
-# Good News! We recently changed the default parameters in MPLS which is now different from those in the orginal paper. The new parameters often give signifant improvement over old version, since it emphasizes more on the cycle information. We encourage the users to try both versions and see the difference. The improved version remains being SOTA in rotation averaging.
+# Good News! 
+
+We recently changed the default parameters in MPLS which is now different from those in the orginal paper. The new parameters often give signifant improvement over old version, since it emphasizes more on the cycle information. We encourage the users to try both versions and see the difference. The improved version remains being SOTA in rotation averaging.
 
 The python3 version of CEMP-SO(3) for rotation averaging is released at [CEMP_SO3_Python](https://github.com/MattyChoi/CEMP_SO3_Python) !
 
