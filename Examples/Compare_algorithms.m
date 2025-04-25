@@ -32,7 +32,9 @@ MPLS_parameters.stop_threshold = 1e-3;
 MPLS_parameters.max_iter = 100;
 MPLS_parameters.thresholding = [0.95,0.9,0.85,0.8];
 MPLS_parameters.reweighting = CEMP_parameters.reweighting(end);
-MPLS_parameters.cycle_info_ratio = 1./((1:MPLS_parameters.max_iter)+1);
+%% This is in the original paper: MPLS_parameters.cycle_info_ratio = 1./((1:MPLS_parameters.max_iter)+1);
+%% The following parameter often works better (the users can try both version and decide)
+MPLS_parameters.cycle_info_ratio = 1-1./((1:MPLS_parameters.max_iter)+1);
 
 % For dense graphs with sufficient uncorrupted 3-cycles for all edges, 
 % the following parameters may work even better: reweighting parameter can gradually
